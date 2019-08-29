@@ -79,7 +79,9 @@ style: |
 <!-- _backgroundColor: #0078D7 -->
 <!-- _color: white -->
 
+## 
 # なれる！Azure Stack Operator
+## 1907 Update
 
 ---
 
@@ -115,8 +117,8 @@ style: |
 
 ## 前提条件
 
-- Dell EMC Cloud for Microsoft Azure Stack 13G
-- 2019/04時点での実装・情報・運用経験
+- Dell EMC Cloud for Microsoft Azure Stack 14G
+- 2019/07時点での実装・情報・運用経験
 - IaaS までの話。PaaS の運用は対象外
 
 ---
@@ -141,7 +143,7 @@ style: |
 ### Azure Stack とは
 
 - 誤：Hyper-V ベースの仮想基盤
-- 正：アプライアンス型 Azure 
+- **正：アプライアンス型 Azure**
 
 ---
 
@@ -150,12 +152,12 @@ style: |
 ### Azure Stack とは
 
 - 誤：Hyper-V ベースの仮想基盤
-- 正：アプライアンス型 Azure 
+- **正：アプライアンス型 Azure**
 
 ### Azure Stack の運用方法
 
 - 誤：Windows Server として運用する
-- 正：アプライアンスのように運用する
+- **正：アプライアンスのように運用する**
 
 ---
 
@@ -269,8 +271,8 @@ style: |
 
 - Quota：リソースプロバイダごとの制限
 - Plan：複数の制限をまとめる
-- Offer：利用者向けにPlanをまとめる
-- User Subscription：ユーザとOfferを紐づける
+- Offer：利用者向けに Plan をまとめる
+- User Subscription：ユーザと Offer を紐づける
 
 <!-- _footer: https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-plan-offer-quota-overview -->
 
@@ -284,6 +286,7 @@ style: |
 
 ![width:1000px](images/011.png)
 
+<!-- _footer: https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-quota-types -->
 
 ---
 
@@ -488,9 +491,9 @@ style: |
 
 ### ポータルからログをアップロードする
 
-ポータルのログアップロード機能を利用して、サポートの Blob にアップロード
+ポータルのログアップロード機能を利用して、Azure Stack からサポートの Blob にログを直接アップロード
 
-![width:600px](images/023.png)
+![width:520px](images/023.png)
 
 ---
 
@@ -529,6 +532,8 @@ style: |
 - 全てのコマンドが実行できると、利用者に内部構造をいじられる
 - Just Enough Administrator を利用して、利用できるコマンドを制限している
 
+<!-- _footer: https://docs.microsoft.com/lt-lt/azure/azure-stack/azure-stack-privileged-endpoint -->
+
 ---
 
 <!-- _class: lead -->
@@ -541,7 +546,7 @@ style: |
 
 ## その3：障害対応
 
-### ERCSの真の力を開放する
+### ERCS の真の力を開放する
 
 - 制限されたコマンドだけでは復旧作業ができない
 - Get-SupportSessionToken を実行して Token を生成する
@@ -553,13 +558,13 @@ style: |
 
 ## その3：障害対応
 
-### ERCSの真の力を開放する
+### ERCS の真の力を開放する
 
 - サポート担当が制限解除の Token をくれる
 - Unlock-SupportSession の引数に Token を入力する。
 - ERCS が真の姿を現す。通常の PowerShell を使って復旧作業
 
-![width:430px](images/025.png)
+![width:550px](images/025.png)
 
 ---
 
@@ -573,6 +578,8 @@ style: |
 - FAIL がでたらピンチ
 
 ![width:1100px](images/026.png)
+
+<!-- _footer: https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-diagnostic-test -->
 
 ---
 
@@ -615,7 +622,7 @@ style: |
 <!-- _color: white -->
 
 # Azure Stack 運用その4
-# 障害対応
+# バックアップ
 
 ---
 
@@ -629,6 +636,8 @@ style: |
 - スケジュールバックアップと世代管理が可能
 - 証明書でバックアップファイルを暗号化
   - 自己証明書でもよい
+
+<!-- _footer: https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-backup-enable-backup-console -->
 
 ---
 
@@ -651,6 +660,9 @@ style: |
 - 上記以外は全滅の模様
 
 ![width:1000px](images/030.png)
+
+<!-- _footer: https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-backup-recover-data#data-in-backups -->
+
 
 ---
 
@@ -698,6 +710,9 @@ style: |
   - アップデートするしかない
   - 累積アップデートがないので、順番に適用する
 
+<!-- _footer: https://docs.microsoft.com/ja-jp/azure/azure-stack/azure-stack-servicing-policy#keep-your-system-under-support -->
+
+
 ---
 
 ## その5：パッチ適用・アップデート
@@ -710,6 +725,8 @@ style: |
 - Express
   - Windows Update を含まない Update
   - Host Node の再起動を伴わず、Full よりも適用時間が短い
+
+<!-- _footer: https://docs.microsoft.com/ja-jp/azure-stack/operator/azure-stack-updates#plan-for-updates -->
 
 ---
 
@@ -780,7 +797,7 @@ style: |
 - OEM ベンダの仕組みに従って対応。ベンダごとに手順が違う。簡単な手順でアップデートを実施できるOEMベンダがおすすめ
   - Host Node と HLH のファームウェアを更新する
   - HLH のドライバを更新する
-  - HLH と HW 運用管理 VM に Windows Updateを適用する
+  - HLH と HW 運用管理 VM に Windows Update を適用する
   - HW運用管理ソフトウェアを更新する
   - スイッチのファームウェアを更新する
 
